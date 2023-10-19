@@ -1,5 +1,6 @@
 import sys
 import pygame as pg
+from settings import Settings
 
 class AlienInvasion:
     """Overall class to manage game assets and behaviour"""
@@ -9,7 +10,8 @@ class AlienInvasion:
         pg.init()
 
         self.clock = pg.time.Clock()
-        self.screen = pg.display.set_mode((1200, 800))
+        self.settings = Settings()
+        self.screen = pg.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pg.display.set_caption("Alien Invasion")
         self.bg_color = (230, 230, 230)
 

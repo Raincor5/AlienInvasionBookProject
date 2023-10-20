@@ -32,16 +32,22 @@ class AlienInvasion:
             if event.type == pg.QUIT:
                 sys.exit()
             elif event.type == pg.KEYDOWN:
-                if event.key == pg.K_RIGHT:
-                    # Move the ship to the right
-                    self.ship.moving_right = True
-                elif event.key == pg.K_LEFT:
-                    self.ship.moving_left = True
+                self._check_keydown_event(event)
             elif event.type == pg.KEYUP:
-                if event.key == pg.K_RIGHT:
-                    self.ship.moving_right = False
-                elif event.key == pg.K_LEFT:
-                    self.ship.moving_left = False
+                self._check_keyup_event(event)
+
+    def _check_keydown_event(self, event):
+        if event.key == pg.K_RIGHT:
+            # Move the ship to the right
+            self.ship.moving_right = True
+        elif event.key == pg.K_LEFT:
+            self.ship.moving_left = True
+
+    def _check_keyup_event(self, event):
+        if event.key == pg.K_RIGHT:
+            self.ship.moving_right = False
+        elif event.key == pg.K_LEFT:
+            self.ship.moving_left = False
 
     def _update_screen(self):
         """Updates images on the screen, and flip to the new screen."""
@@ -50,6 +56,7 @@ class AlienInvasion:
 
         # Make the most recently drawn screen visible.
         pg.display.flip()
+
 
 if __name__ == "__main__":
     ai = AlienInvasion()
